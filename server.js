@@ -12,10 +12,10 @@ var PORT = process.env.PORT || 3000;
 
 //var todoNextId = 1;
 app.use(methodOverride('_method'));
-
-app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs').__express);
 app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
 
 app.use(bodyParser.json());
 
@@ -136,42 +136,44 @@ app.put('/todos/:id', urlencodedParser, function(req, res) {
 });
 
 //{force:true}
-db.sequelize.sync().then(function(){
-	return db.todo.bulkCreate([
-	{
-
-    	"firstname": "Michael",
-    	"lastname": "Liu",
-    	"role": true,
-    	"location": "Los Angelos",
-    	"description": "Let\'s go to ShabuShabu",
-    	"completed": false,
-
-	},
-	{
-
-    	"firstname": "Ray",
-    	"lastname": "Liu",
-    	"role": true,
-    	"location": "China",
-    	"description": "Whatever",
-    	"completed": false,
-
-	},
-	{
-
-    	"firstname": "Richard",
-    	"lastname": "Yi",
-    	"role": true,
-    	"location": "Vancouver",
-    	"description": "I m a super dad!",
-    	"completed": false,
-
-	}]
-	)
-}).then(function() {
+db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT + '!');
 	});
  })
 
+
+// then(function(){
+// 	return db.todo.bulkCreate([
+// 	{
+
+//     	"firstname": "Michael",
+//     	"lastname": "Liu",
+//     	"role": true,
+//     	"location": "Los Angelos",
+//     	"description": "Let\'s go to ShabuShabu",
+//     	"completed": false,
+
+// 	},
+// 	{
+
+//     	"firstname": "Ray",
+//     	"lastname": "Liu",
+//     	"role": true,
+//     	"location": "China",
+//     	"description": "Whatever",
+//     	"completed": false,
+
+// 	},
+// 	{
+
+//     	"firstname": "Richard",
+//     	"lastname": "Yi",
+//     	"role": true,
+//     	"location": "Vancouver",
+//     	"description": "I m a super dad!",
+//     	"completed": false,
+
+// 	}]
+// 	)
+// })
