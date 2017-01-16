@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tour for Chinese</title>
+</head>
+<body>
+	<div><h4>Name: <%= TODO.firstname %> <%= TODO.lastname %></h4>
+		</div>
+	<ul>
+		<li>Location: <span><%= TODO.location %></span></li>
+		<li>About Myself: <span><%= TODO.description %></span></li>
+		<!--<li>Title: <span><%= TODO.title %></span></li>
+		<li>Details of trip: <span><%= TODO.story %></span></li>-->
+	<ul>
+	</br>
+	</br>
+	<form method="post" action="/todos/1?_method=PUT">
+		First name: <input type="text" id="firstname" name="firstname" /><br /><br />
+		Last name: <input type="text" id="lastname" name="lastname" /><br /><br />
+		Location: <input type="text" id="location" name="location" /><br /><br />
+		About myself: <input type="text" id="description" name="description" /><br /><br /> 
+		<input type="submit" value="Update Story">
+	</form>
+
+
+	</ul>
+</body>
+</html>
