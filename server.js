@@ -135,8 +135,8 @@ app.put('/todos/:id', urlencodedParser, function(req, res) {
 
 });
 
-
-db.sequelize.sync({force:true}).then(function(){
+//{force:true}
+db.sequelize.sync().then(function(){
 	return db.todo.bulkCreate([
 	{
 
