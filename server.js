@@ -5,7 +5,7 @@ var _ = require('underscore');
 var db = require('./db.js');
 var methodOverride = require('method-override');
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false});
+//var urlencodedParser = bodyParser.urlencoded({ extended: false});
 
 //heroku or local
 var PORT = process.env.PORT || 3000;
@@ -71,9 +71,9 @@ app.get('/todos/:id', function(req, res) {
 	});
 });
 
-//POST /todos/
+//POST /todos/urlencodedParser,
 
-app.post('/todos', urlencodedParser, function(req, res) {
+app.post('/todos',  function(req, res) {
 	//filter out other properties and only keep these two
 	var body = _.pick(req.body, 'firstname', 'lastname','location','description');
 	//call create on db.todo
@@ -107,8 +107,8 @@ app.delete('/todos/:id', function(req, res) {
 	});
 });
 
-//PUT /todos/:id
-app.put('/todos/:id', urlencodedParser, function(req, res) {
+//PUT /todos/:id  urlencodedParser,
+app.put('/todos/:id',  function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, 'firstname', 'lastname', 'location', 'description');
 	// var attributes = {};
