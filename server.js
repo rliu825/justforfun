@@ -83,10 +83,7 @@ app.post('/todos', urlencodedParser, function(req, res) {
 		res.status(400).json(e);
 	});
 
-	// db.todo.create(body);
-	// res.redirect()
-	console.log(req.body.firstname);
-	console.log(req.body.firstname);
+
 });
 
 
@@ -136,7 +133,7 @@ app.put('/todos/:id', urlencodedParser, function(req, res) {
 });
 
 //{force:true}
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT + '!');
 	});
