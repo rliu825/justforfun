@@ -71,9 +71,9 @@ app.get('/todos/:id', function(req, res) {
 	});
 });
 
-//POST /todos/urlencodedParser,
+//POST /todos/
 
-app.post('/todos',  function(req, res) {
+app.post('/todos', urlencodedParser, function(req, res) {
 	//filter out other properties and only keep these two
 	var body = _.pick(req.body, 'firstname', 'lastname','location','description');
 	//call create on db.todo
@@ -107,8 +107,8 @@ app.delete('/todos/:id', function(req, res) {
 	});
 });
 
-//PUT /todos/:id  urlencodedParser,
-app.put('/todos/:id',  function(req, res) {
+//PUT /todos/:id  
+app.put('/todos/:id', urlencodedParser, function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, 'firstname', 'lastname', 'location', 'description');
 	// var attributes = {};
@@ -136,6 +136,7 @@ app.put('/todos/:id',  function(req, res) {
 db.sequelize.sync({force:true}).then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT + '!');
+		console.log(process.env.DATABASE_URL);
 	});
  })
 
